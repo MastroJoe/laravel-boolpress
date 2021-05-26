@@ -86,7 +86,17 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+      $request->validate([
+        'title' => 'required|string|max:255',
+        'content' => 'required|string'
+      ]);
+
+      $data = $request->all();
+
+      $data['slug'] = $this->generateSlug($data['title']);
+      $post->update($data);
+
+      return redirect()->route('admin.posts.index');
     }
 
     /**
