@@ -6,6 +6,8 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 class PostController extends Controller
 {
     /**
@@ -47,7 +49,7 @@ class PostController extends Controller
       $post = new Post();
       $post->fill($data);
 
-      $post->slug = Str::slug($post->title, '-');
+      $post->slug = $this->generateSlug($post->title);
       $post->save();
 
       return redirect()->route('admin.posts.index');
@@ -96,5 +98,22 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    private function generateSlug(string $title)
+    {
+      $slug = Str::slug($title, '-');
+      $slug_base = $slug;
+      $contatore = 1;
+
+      $post_with_slug = Post::where('slug', '=', $slug)->first();
+      while($post_with_slug) {
+        $slug = $slug_base . '-' . $contatore;
+        $contatore++;
+
+        $post_with_slug = Post::where('slug', '=' , $slug)->first();
+      }
+
+      return $slug;
     }
 }
