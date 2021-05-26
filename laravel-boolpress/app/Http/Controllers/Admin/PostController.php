@@ -47,8 +47,10 @@ class PostController extends Controller
       $post = new Post();
       $post->fill($data);
 
-      $post->slug = 'Esempio';
+      $post->slug = Str::slug($post->title, '-');
       $post->save();
+
+      return redirect()->route('admin.posts.index');
     }
 
     /**
