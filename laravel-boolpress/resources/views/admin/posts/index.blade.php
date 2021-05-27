@@ -19,6 +19,9 @@
                 {{ $post->content }}
 
                 <div class="">
+                  <a class="btn btn-primary" href="{{ route('admin.posts.show', ['slug' => $post -> slug]) }}">
+                    Mostra tutto
+                  </a>
                   <a class="btn btn-primary" href="{{ route('admin.posts.edit', ['post' => $post -> id])}}">
                     Modifica
                   </a>
