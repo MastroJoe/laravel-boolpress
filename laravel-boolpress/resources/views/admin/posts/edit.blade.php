@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <h3>Modifica Post</h3>
+      <h3>Modifica post</h3>
     </div>
   </div>
 
@@ -38,7 +38,9 @@
           <textarea class="form-control" id="content" type="text" name="content" value="">{{ $post -> content }}</textarea>
         </div>
 
-        <button class="btn btn-primary" type="submit" name="button">Salva</button>
+        <button class="btn btn-primary" type="submit" name="button">
+          Salva
+        </button>
       </form>
     </div>
   </div>

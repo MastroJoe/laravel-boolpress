@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12">
       <a class="btn btn-primary" href="{{route('admin.categories.create')}}">
-        Nuova categoria
+        Crea nuova categoria
       </a>
     </div>
   </div>
@@ -13,7 +13,9 @@
     @foreach ($categories as $category)
       <div class="col-md-3">
           <div class="card">
-              <div class="card-header">{{ $category->name }}</div>
+              <div class="card-header">
+                {{ $category->name }}
+              </div>
 
               <div class="card-body">
                 <div class="">
