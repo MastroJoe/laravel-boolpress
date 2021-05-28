@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding-bottom: 20px;">
       <h3>Modifica categoria</h3>
     </div>
   </div>
