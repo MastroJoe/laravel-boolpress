@@ -4,7 +4,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a href="{{ route('admin.posts.create')}}">Crea nuovo post</a>
+      <a href="{{ route('admin.posts.create')}}">
+        Crea nuovo post
+      </a>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -20,7 +22,7 @@
 
                 <div class="">
                   <a class="btn btn-primary" href="{{ route('admin.posts.show', ['slug' => $post -> slug]) }}">
-                    Mostra tutto
+                    Mostra
                   </a>
                   <a class="btn btn-primary" href="{{ route('admin.posts.edit', ['post' => $post -> id])}}">
                     Modifica
