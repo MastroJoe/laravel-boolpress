@@ -19,6 +19,7 @@ class PostController extends Controller
     public function index()
     {
       $posts = Post::all();
+
       return view('admin.posts.index', compact('posts'));
     }
 
@@ -78,7 +79,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-      return view('admin.posts.edit', compact('post'));
+      $categories = Category::all();
+
+      return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -91,6 +94,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
       $request->validate([
+        'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string'
       ]);
@@ -98,6 +102,8 @@ class PostController extends Controller
       $data = $request->all();
 
       $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
+
+
       $post->update($data);
 
       return redirect()->route('admin.posts.index');
@@ -116,6 +122,7 @@ class PostController extends Controller
       return redirect()->route('admin.posts.index');
     }
 
+
     private function generateSlug(string $title, bool $change = true, string $old_slug = '')
     {
       if (!$change) {
@@ -126,12 +133,12 @@ class PostController extends Controller
       $slug_base = $slug;
       $contatore = 1;
 
-      $post_with_slug = Post::where('slug', '=', $slug)->first();
+      $post_with_slug = Post::where('slug', '=', $slug)->first(); //Post {} || NULL
       while($post_with_slug) {
         $slug = $slug_base . '-' . $contatore;
         $contatore++;
 
-        $post_with_slug = Post::where('slug', '=' , $slug)->first();
+        $post_with_slug = Post::where('slug', '=', $slug)->first(); //Post {} || NULL
       }
 
       return $slug;
