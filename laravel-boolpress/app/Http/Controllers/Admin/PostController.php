@@ -53,7 +53,10 @@ class PostController extends Controller
 
       $data = $request->all();
 
-      $cover = Storage::put('uploads', $data['cover']);
+      $cover = NULL;
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+      }
 
       $post = new Post();
       $post->fill($data);
@@ -109,8 +112,11 @@ class PostController extends Controller
 
 
       $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
-      $cover = Storage::put('uploads', $data['cover']);
-      $data['cover'] = 'storage/'.$cover;
+
+      if (array_key_exists('cover', $data)) {
+        $cover = Storage::put('uploads', $data['cover']);
+        $data['cover'] = 'storage/'.$cover;
+      }
 
       $post->update($data);
 
