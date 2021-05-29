@@ -48,7 +48,7 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'cover' => 'image|max:150|nullable'
+        'cover' => 'image|max:6000|nullable'
       ]);
 
       $data = $request->all();
@@ -59,6 +59,7 @@ class PostController extends Controller
       $post->fill($data);
 
       $post->slug = $this->generateSlug($post->title);
+      $post->cover = 'storage/'.$cover;
       $post->save();
 
       return redirect()->route('admin.posts.index');
@@ -100,13 +101,16 @@ class PostController extends Controller
       $request->validate([
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
-        'content' => 'required|string'
+        'content' => 'required|string',
+        'cover' => 'image|max:6000|nullable'
       ]);
 
       $data = $request->all();
 
-      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
 
+      $data['slug'] = $this->generateSlug($data['title'], $post->title != $data['title'], $post->slug);
+      $cover = Storage::put('uploads', $data['cover']);
+      $data['cover'] = 'storage/'.$cover;
 
       $post->update($data);
 
