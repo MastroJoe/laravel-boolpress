@@ -46,10 +46,13 @@ class PostController extends Controller
       $request->validate([
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
-        'content' => 'required|string'
+        'content' => 'required|string',
+        'cover' => 'image|max:50|nullable'
       ]);
 
       $data = $request->all();
+
+      $cover = Storage::put('uploads', $data['cover']);
 
       $post = new Post();
       $post->fill($data);

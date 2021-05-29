@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form action="{{ route('admin.posts.store') }}" method="post">
+      <form action="{{ route('admin.posts.store') }}" method="post" enctype:"multipart/form-data">
         @csrf
         @method('POST')
 
@@ -22,7 +22,7 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
           </select>
-          @error('category')
+          @error('category_id')
             <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
