@@ -22,7 +22,7 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
           </select>
-          @error('title')
+          @error('category')
             <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
@@ -41,6 +41,14 @@
             {{ old('content') }}
           </textarea>
           @error('content')
+            <small class="text-danger">{{ $message }}</small>
+          @enderror
+        </div>
+
+        <div class="form-group">
+          <label for="cover">Cover</label>
+          <input class="form-control-file @error('cover') is-invalid @enderror" id="cover" type="file" name="cover">
+          @error('cover')
             <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
