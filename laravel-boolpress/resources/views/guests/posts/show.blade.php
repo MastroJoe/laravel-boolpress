@@ -7,7 +7,7 @@
       <h1>{{ $post->title }}</h1>
       <h4>Category:
         @if ($post->category)
-          <a href="{{ route('category.index', ['slug' => $post->category->slug])}}">
+          <a href="{{ route('category.index', ['slug' => $post->category->slug]) }}">
             {{ $post->category->name }}
           </a>
         @endif
@@ -18,5 +18,4 @@
     </div>
   </div>
 </div>
-
 @endsection
