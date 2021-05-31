@@ -4,32 +4,32 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="padding-bottom: 20px;">
-      <a class="btn btn-primary" href="{{route('admin.categories.create')}}">
-        Crea nuova categoria
+      <a class="btn btn-primary" href="{{route('admin.tags.create')}}">
+        Crea nuovo tag
       </a>
     </div>
   </div>
   <div class="row justify-content-center">
-    @foreach ($categories as $category)
+    @foreach ($tags as $tag)
       <div class="col-md-3">
           <div class="card">
               <div class="card-header">
-                {{ $category->name }}
+                {{ $tag->name }}
               </div>
 
               <div class="card-body">
                 <div class="">
-                  <a class="btn btn-info" href="{{route('admin.categories.show', ['category' => $category->id])}}">
+                  <a class="btn btn-info" href="{{route('admin.tags.show', ['tag' => $tag->id])}}">
                     Mostra
                   </a>
-                  <a class="btn btn-primary" href="{{route('admin.categories.edit', ['category' => $category->id])}}">
+                  <a class="btn btn-primary" href="{{route('admin.tags.edit', ['tag' => $tag->id])}}">
                     Modifica
                   </a>
                   <a class="btn btn-danger" onclick="event.preventDefault();
                                 this.nextElementSibling.submit();">
                     Elimina
                   </a>
-                  <form action="{{route('admin.categories.destroy', ['category' => $category->id])}}" method="POST" style="display: none;">
+                  <form action="{{route('admin.tags.destroy', ['tag' => $tag->id])}}" method="POST" style="display: none;">
                       @csrf
                       @method('DELETE')
                   </form>
