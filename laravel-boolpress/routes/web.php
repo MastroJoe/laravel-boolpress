@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
      Route::get('/', 'HomeController@index')->name('index');
      Route::resource('posts', 'PostController');
      Route::resource('categories', 'CategoryController');
+     Route::resource('tags', 'TagController');
    });
   /**
   *Rotte Admin
