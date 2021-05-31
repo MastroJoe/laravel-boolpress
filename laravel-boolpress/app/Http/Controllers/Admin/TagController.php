@@ -61,7 +61,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+      return view('admin.tags.show', compact('tag'));
     }
 
     /**
