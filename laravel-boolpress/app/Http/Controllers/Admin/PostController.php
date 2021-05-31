@@ -6,9 +6,11 @@ use App\Post;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\SendNewMail;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -64,6 +66,8 @@ class PostController extends Controller
       $post->slug = $this->generateSlug($post->title);
       $post->cover = 'storage/'.$cover;
       $post->save();
+
+      Mail::to('mail@mail.it')->send(new SendNewMail());
 
       return redirect()->route('admin.posts.index');
     }
