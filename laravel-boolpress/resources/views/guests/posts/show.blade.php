@@ -15,6 +15,13 @@
       <p>
         {{ $post->content }}
       </p>
+      <div class="tags">
+        @foreach ($post->tags as $tag)
+          <a href="{{ route('tag.index', ['slug' => $tag->slug]) }}">
+            #{{ $tag->name }}
+          </a>
+        @endforeach
+      </div>
     </div>
   </div>
 </div>
