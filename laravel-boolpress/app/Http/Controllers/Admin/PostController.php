@@ -71,7 +71,7 @@ class PostController extends Controller
       $post->save();
 
       if (array_key_exists('tag_ids', $data)) {
-        $post->tags()->attach($tag_ids);
+        $post->tags()->attach($data['tag_ids']);
       }
 
       Mail::to('mail@mail.it')->send(new SendNewMail());
@@ -99,8 +99,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
       $categories = Category::all();
+      $tags = Tag::all();
 
-      return view('admin.posts.edit', compact('post', 'categories'));
+      return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -116,7 +117,8 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'cover' => 'image|max:6000|nullable'
+        'cover' => 'image|max:6000|nullable',
+        'tag_ids.*' => 'exists:tags,id',
       ]);
 
       $data = $request->all();
@@ -130,6 +132,12 @@ class PostController extends Controller
       }
 
       $post->update($data);
+
+      if (array_key_exists('tag_ids', $data)) {
+        $post->tags()->sync($data['tag_ids']);
+      } else {
+        $post->tags()->detach();
+      }
 
       return redirect()->route('admin.posts.index');
     }
