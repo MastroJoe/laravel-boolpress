@@ -50,7 +50,7 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'cover' => 'image|max:6000|nullable'
+        'cover' => 'mimes:jpg,bmp,png|max:6000|nullable'
       ]);
 
       $data = $request->all();
