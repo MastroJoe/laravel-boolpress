@@ -52,7 +52,8 @@ class PostController extends Controller
         'category_id' => 'exists:categories,id|nullable',
         'title' => 'required|string|max:255',
         'content' => 'required|string',
-        'cover' => 'mimes:jpg,bmp,png|max:6000|nullable'
+        'cover' => 'mimes:jpg,bmp,png|max:6000|nullable',
+        'tag_ids.*' => 'exists:tags,id',
       ]);
 
       $data = $request->all();
@@ -68,6 +69,10 @@ class PostController extends Controller
       $post->slug = $this->generateSlug($post->title);
       $post->cover = 'storage/'.$cover;
       $post->save();
+
+      if (array_key_exists('tag_ids', $data)) {
+        $post->tags()->attach($tag_ids);
+      }
 
       Mail::to('mail@mail.it')->send(new SendNewMail());
 
