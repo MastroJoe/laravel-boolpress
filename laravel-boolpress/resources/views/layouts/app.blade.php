@@ -79,7 +79,7 @@
           </div>
       </nav>
 
-      <main class="py-4">
+      <main class="container-fluid" style="height: calc(100vh - 55px)">
           @yield('content')
       </main>
   </div>
