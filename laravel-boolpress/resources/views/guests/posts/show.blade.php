@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container container-show">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 post-show pt-50">
       <h1>{{ $post->title }}</h1>
       <h4>Category:
         @if ($post->category)
@@ -12,7 +12,7 @@
           </a>
         @endif
       </h4>
-      <p>
+      <p class="pt-15">
         {{ $post->content }}
       </p>
       <div class="tags">

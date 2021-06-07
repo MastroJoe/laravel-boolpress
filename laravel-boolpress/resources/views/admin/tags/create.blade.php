@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid mr-300">
   <div class="row">
     <div class="col-md-12" style="padding-bottom: 20px;">
       <h3>Nuovo tag</h3>

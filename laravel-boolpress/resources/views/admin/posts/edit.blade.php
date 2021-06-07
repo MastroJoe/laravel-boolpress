@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid mr-300">
   <div class="row justify-content-center">
     <div class="col-md-12" style="padding-bottom: 20px;">
-      <h3>Modifica post</h3>
+      <h3>Edit post</h3>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="category">Category</label>
           <select class="form-control @error('category') is-invalid @enderror" id="category" name="category_id">
-            <option value="">Seleziona</option>
+            <option value="">Select</option>
             @foreach($categories as $category)
             <option value="{{ $category->id }}" {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
               {{ $category->name }}
@@ -73,7 +73,7 @@
         </div>
 
         <button class="btn btn-primary" type="submit" name="button">
-          Salva
+          Save changes
         </button>
       </form>
     </div>

@@ -1,0 +1,19 @@
+// main
+main {
+
+  // homepage index.blade
+  .container-homepage {
+
+  }
+
+  // admin/guests show.blade
+  .container-show {
+    .row {
+      .post-show, .category-show, .tag-show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}

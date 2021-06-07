@@ -1,0 +1,74 @@
+// flexbox
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin flex-start-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin flex-end-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flex-start-start-space {
+display: flex;
+align-content: flex-start;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+@mixin flex-column-wrap-center {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@mixin flex-column-evenly-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid mr-300">
   <div class="row justify-content-center">
     <div class="col-md-12" style="padding-bottom: 20px;">
       <h3>Nuovo Post</h3>
@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="category">Category</label>
           <select class="form-control @error('category') is-invalid @enderror" id="category" name="category_id">
-            <option value="">Seleziona</option>
+            <option value="">Select</option>
             @foreach($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group">
-          <label for="tag">Tags</label>
+          <label for="tag">Tag(s)</label>
           <select class="form-control @error('tag_ids') is-invalid @enderror" id="tag" name="tag_ids[]" multiple>
             @foreach($tags as $tag)
             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -66,7 +66,7 @@
         </div>
 
         <button class="btn btn-primary" type="submit" name="button">
-          Salva
+          Save
         </button>
       </form>
     </div>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid mr-300">
   <div class="row">
     <div class="col-md-12" style="padding-bottom: 20px;">
       <a class="btn btn-primary" href="{{route('admin.tags.create')}}">
@@ -11,9 +11,9 @@
   </div>
   <div class="row justify-content-center">
     @foreach ($tags as $tag)
-      <div class="col-md-3">
+      <div class="col-md-3 pb-20">
           <div class="card">
-              <div class="card-header">
+              <div class="card-header center">
                 {{ $tag->name }}
               </div>
 
